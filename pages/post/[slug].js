@@ -9,6 +9,7 @@ import CommentsForm from '../../components/CommentsForm';
 import Comments from '../../components/Comments';
 import PostWidget from '../../components/PostWidget';
 import Categories from '../../components/Categorise';
+import Loader from '../../components/Loader';
 
 const PostDetails = ({ post }) => {
   const router = useRouter();
