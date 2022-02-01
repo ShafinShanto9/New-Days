@@ -1,8 +1,16 @@
  import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getCategories } from '../services';
  
  const Header = () => {
-     const categorise = [{name: "React", slug:"react"}, {name:"Web Development", slug:"webdev"}]
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      getCategories().then((newCategories) => {
+        setCategories(newCategories);
+      });
+    }, []);
    return(
        <div className='container mx-auto px-10 mb-8'>
            <div className='border-b w-full inline-block broder-blue-400 py-8'>
@@ -15,7 +23,7 @@ import React from 'react';
                 </div>
                 <div className='hidden md:float-left md:contents'>
                     {
-                        categorise.map((category) => (
+                        categories.map((category) => (
                             <Link key={category.slug} href={`/category/${category.slug}`}>
                                 <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
                                     {category.name}
